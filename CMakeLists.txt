@@ -5,13 +5,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(QTrackballCameraController)
 
-find_package(Qt6 COMPONENTS Core Gui 3DRender 3DInput 3DLogic REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui 3DRender 3DInput 3DLogic Qml REQUIRED)
 
-qt_wrap_cpp(MOC src/QTrackballCameraController.h)
+add_library(${PROJECT_NAME} SHARED src/QTrackballCameraController.cpp)
 
-add_library(${PROJECT_NAME} SHARED src/QTrackballCameraController.cpp ${MOC})
+set_target_properties(${PROJECT_NAME} PROPERTIES AUTOMOC ON)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::3DRender Qt6::3DInput Qt6::3DLogic)
+qt_add_qml_module(${PROJECT_NAME} URI QTrackballCameraController
+    URI Qt3D.Extras.TrackBallCameraController
+    VERSION 1.0
+    SOURCES src/QTrackballCameraController.h src/QTrackballCameraController.cpp
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::3DRender Qt6::3DInput Qt6::3DLogic Qt6::Qml)
+
+target_include_directories(${PROJECT_NAME} PUBLIC src)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "src/QTrackballCameraController;src/QTrackballCameraController.h")
 

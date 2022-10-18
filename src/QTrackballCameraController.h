@@ -42,6 +42,7 @@
 #include <Qt3DCore/QEntity>
 #include <Qt3DExtras/qt3dextras_global.h>
 #include <Qt3DRender/QCamera>
+#include <QtQml/qqmlregistration.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -72,6 +73,7 @@ namespace Qt3DExtras
 class QTrackballCameraController : public Qt3DCore::QEntity
 {
   Q_OBJECT
+  QML_ELEMENT
   Q_PROPERTY(Qt3DRender::QCamera *camera READ camera WRITE setCamera NOTIFY cameraChanged)
   Q_PROPERTY(float panSpeed READ panSpeed WRITE setPanSpeed NOTIFY panSpeedChanged)
   Q_PROPERTY(float zoomSpeed READ zoomSpeed WRITE setZoomSpeed NOTIFY zoomSpeedChanged)
