@@ -40,7 +40,6 @@
 #include <QPoint>
 #include <QSize>
 #include <Qt3DCore/QEntity>
-#include <Qt3DExtras/qt3dextras_global.h>
 #include <Qt3DRender/QCamera>
 #include <QtQml/qqmlregistration.h>
 
@@ -178,7 +177,7 @@ private:
   void onTriggered(float);
 };
 
-} // namespace Qt3DExtras
+} // namespace Qt3D
 
 QT_END_NAMESPACE
 

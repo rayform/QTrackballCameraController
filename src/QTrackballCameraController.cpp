@@ -444,6 +444,6 @@ void QTrackballCameraController::onTriggered(float)
   }
 }
 
-} // namespace Qt3DExtras
+} // namespace Qt3D
 
 QT_END_NAMESPACE
