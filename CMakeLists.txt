@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
+project(QTrackballCameraController)
 
 find_package(Qt6 COMPONENTS Core Gui 3DRender 3DInput 3DLogic Qml REQUIRED)
 
@@ -24,6 +25,7 @@ qt_add_qml_module(${PROJECT_NAME}
     VERSION 1.0
     SOURCES src/QTrackballCameraController.h src/QTrackballCameraController.cpp
     DEPENDENCIES Qt3DRender Qt3DInput Qt3DLogic
+    AUTO_RESOURCE_PREFIX
 )
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY PUBLIC_HEADER
