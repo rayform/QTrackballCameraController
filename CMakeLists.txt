@@ -24,8 +24,8 @@ qt_add_qml_module(${PROJECT_NAME}
     CLASS_NAME TrackballCameraController
     VERSION 1.0
     SOURCES src/QTrackballCameraController.h src/QTrackballCameraController.cpp
+    OUTPUT_DIRECTORY Qt3D/Extras/TrackballCameraController
     DEPENDENCIES Qt3DRender Qt3DInput Qt3DLogic
-    AUTO_RESOURCE_PREFIX
 )
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY PUBLIC_HEADER
@@ -38,9 +38,5 @@ install(TARGETS ${PROJECT_NAME}
 )
 
 # export plugin
-set(qml_dir "${CMAKE_INSTALL_LIBDIR}/Qt3D/Extras/TrackballCameraController")
-install(TARGETS ${PROJECT_NAME}plugin LIBRARY DESTINATION ${qml_dir})
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qmldir DESTINATION ${qml_dir})
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/qmltypes DESTINATION ${qml_dir})
-
-install(EXPORT ${PROJECT_NAME}Config DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
+install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Qt3D" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(EXPORT ${PROJECT_NAME}Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
